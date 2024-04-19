@@ -1,7 +1,10 @@
+"use client";
 import { slugify } from "@/utils/utils";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 export default function GameCard({ card }: any) {
+  const router = useRouter();
   return (
     <div className="w-full p-2 flex flex-col items-center gap-4">
       <h3>{card.name}</h3>
@@ -11,6 +14,8 @@ export default function GameCard({ card }: any) {
         height={200}
         style={{ objectFit: "contain" }}
         alt={card.name}
+        onClick={() => router.push(`/card/${card.id}`)}
+        className="cursor-pointer hover:scale-105"
       />
       <div className="colors">
         <Image

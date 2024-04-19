@@ -17,10 +17,7 @@ export default function RootLayout({
     <html lang="en">
       <body className="bg-primary">
         <Navigation />
-        <main className='flex'>
-          <aside className='w-1/4 bg-fourth'></aside>
-          <section className='w-3/4'>{children}</section>
-        </main>
+        <main className="flex">{children}</main>
       </body>
     </html>
   );
