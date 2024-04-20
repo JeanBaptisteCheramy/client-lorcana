@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 export default function GameCard({ card }: any) {
   const router = useRouter();
   return (
-    <div className="w-full p-2 flex flex-col items-center gap-4">
+    <div className="w-full p-2 flex flex-col items-center gap-4 ">
       <h3>{card.name}</h3>
       <Image
         src={card.image}
@@ -15,7 +15,7 @@ export default function GameCard({ card }: any) {
         style={{ objectFit: "contain" }}
         alt={card.name}
         onClick={() => router.push(`/card/${card.id}`)}
-        className="cursor-pointer hover:scale-105"
+        className="rounded-xl bs1-own cursor-pointer hover:scale-105 shadow-own-1"
       />
       <div className="colors">
         <Image

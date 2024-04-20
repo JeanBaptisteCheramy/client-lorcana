@@ -29,20 +29,27 @@ export default function Page() {
 
   return (
     <>
-      <aside className="w-1/6 bg-fourth">
-        <select name="filter" id="filter" onChange={handleSelect} className="border rounded-8">
-          {options.map((item, i) => (
-            <option key={i} value={item}>
-              {item}
-            </option>
-          ))}
-        </select>
+      <aside className="w-1/6 bg-fourth py-4">
+        <div className=" w-full flex flex-col items-center gap-2">
+          <label>Type</label>
+          <select
+            id="type"
+            onChange={handleSelect}
+            className="w-3/4 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block p-2.5 "
+          >
+            {options.map((item, i) => (
+              <option key={i} value={item}>
+                {item}
+              </option>
+            ))}
+          </select>
+        </div>
       </aside>
 
       <section className="w-5/6 grid grid-cols-3 justify-items-center	gap-8 p-4">
         {filteredCards.map((item: dataItem, i: number) => (
-            <GameCard key={i} card={item} />
-          ))}
+          <GameCard key={i} card={item} />
+        ))}
       </section>
     </>
   );
