@@ -6,6 +6,7 @@ import dataItem from "@/types/type";
 import { slugify } from "@/utils/utils";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import SearchBar from "../../components/SearchBar";
 
 export default function Page() {
   const { cards, setCards } = useCardStore();
@@ -46,10 +47,10 @@ export default function Page() {
 
   return (
     <>
-      <aside className="w-1/6 bg-fourth py-4">
+      <aside className="w-1/5 bg-fourth py-4">
         <div className="flex flex-col items-center gap-4">
           <div className="w-full flex flex-col items-center">
-            <Label text={'Type'} color={'tertiary'}/>
+            <Label text={"Type"} color={"tertiary"} />
             <select
               id="type"
               onChange={handleSelect}
@@ -63,7 +64,7 @@ export default function Page() {
             </select>
           </div>
           <div className="w-full flex flex-col items-center">
-            <Label text={"Color"} color={'tertiary'} />
+            <Label text={"Color"} color={"tertiary"} />
             <div className="grid grid-cols-3 gap-3 ">
               {colorOptions.map((option, i) => (
                 <Image
@@ -79,7 +80,7 @@ export default function Page() {
             </div>
           </div>
           <div className="w-5/6 flex flex-col items-center">
-              <Label text={'Cost'} color={'tertiary'}/>
+            <Label text={"Cost"} color={"tertiary"} />
             <div className="grid grid-cols-4 items-center gap-2">
               {costs.map((cost, i) => (
                 <button
@@ -92,10 +93,20 @@ export default function Page() {
               ))}
             </div>
           </div>
+          <div className="w-full flex flex-col items-center">
+            <SearchBar
+              labelText={"Search a card"}
+              id={"searchBar"}
+              name={"search"}
+              buttonText={"Search"}
+              textColor={"primary"}
+              bgColor={"tertiary"}
+            />
+          </div>
         </div>
       </aside>
 
-      <section className="w-5/6 grid grid-cols-3 justify-items-center	gap-8 p-4">
+      <section className="w-4/5 grid grid-cols-3 justify-items-center	gap-8 p-4">
         {filteredCards.map((item: dataItem, i: number) => (
           <GameCard key={i} card={item} />
         ))}
