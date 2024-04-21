@@ -1,4 +1,4 @@
-import dataItem from "@/types/type";
+import { dataItem, deckItem } from "@/types/type";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
@@ -28,12 +28,27 @@ export const useCardStore = create(
 );
 
 
-type filteredCardStore = {
-  filteredCards: dataItem[] | null;
-  filterCards: (filteredCards: dataItem[]) => void; 
+type decksStore = {
+  decks: deckItem[] | null;
+  setDecks: (decks: deckItem[]) => void; 
 }
 
-export const useFilteredCardStore = create<filteredCardStore>((set) => ({
-  filteredCards: null,
-  filterCards: (filteredCards) => set({ filteredCards }),
-}));
+export const useDecksStore = create(
+  persist(
+    (set) => ({
+      decks: null,
+      setDecks: async () => {
+        try {
+          const response = await fetch("http://localhost:3333/api/public/decks");
+          const decksData = await response.json();
+          set({ decks: decksData });
+        } catch (error) {
+          console.error("Error fetching decks data:", error);
+        }
+      },
+    }),
+    {
+      name: "decks-store", 
+    }
+  )
+);

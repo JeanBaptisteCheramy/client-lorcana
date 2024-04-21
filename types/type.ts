@@ -1,4 +1,4 @@
-type dataItem = {
+export type dataItem = {
     id:number
     artist:string
     bodyText:string
@@ -25,4 +25,12 @@ type dataItem = {
     updatedAt: string
   }
 
-export default dataItem
+export type deckItem={
+  id:number
+  name:string
+  user_id: number
+  createdAt: string,
+  updatedAt: string
+}
+
+
