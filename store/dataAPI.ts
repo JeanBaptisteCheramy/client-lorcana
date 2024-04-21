@@ -1,6 +1,6 @@
-import {create} from "zustand";
-import { persist } from "zustand/middleware";
 import dataItem from "@/types/type";
+import { create } from "zustand";
+import { persist } from "zustand/middleware";
 
 type cardStore = {
     cards: dataItem[] | null;
@@ -26,3 +26,14 @@ export const useCardStore = create(
     }
   )
 );
+
+
+type filteredCardStore = {
+  filteredCards: dataItem[] | null;
+  filterCards: (filteredCards: dataItem[]) => void; 
+}
+
+export const useFilteredCardStore = create<filteredCardStore>((set) => ({
+  filteredCards: null,
+  filterCards: (filteredCards) => set({ filteredCards }),
+}));

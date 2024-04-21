@@ -15,9 +15,9 @@ export default function GameCard({ card }: any) {
         style={{ objectFit: "contain" }}
         alt={card.name}
         onClick={() => router.push(`/card/${card.id}`)}
-        className="rounded-xl bs1-own cursor-pointer hover:scale-105 duration-300 shadow-own-1"
+        className="rounded-xl bs1-own cursor-pointer hover:scale-own-102 duration-300 shadow-own-1 "
       />
-      <div className="colors">
+      <div className="card-colors">
         <Image
           src={`/${slugify(card.color)}.png`}
           width={25}

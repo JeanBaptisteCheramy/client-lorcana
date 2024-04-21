@@ -13,6 +13,7 @@ export default function Page() {
   const typeOptions: string[] = ["All"];
   const colorOptions: string[] = [];
   const costs: number[] = [];
+  const lores = [1, 2, 3, 4];
   let [filteredCards, setFilteredCards] = useState(cards);
 
   cards?.forEach((card: dataItem) => {
@@ -39,16 +40,29 @@ export default function Page() {
   function handleCost(cost: number) {
     setFilteredCards(cards.filter((card: dataItem) => card.cost === cost));
   }
+  function handleLore(lore: number) {
+    setFilteredCards(cards.filter((card: dataItem) => card.lore === lore));
+  }
 
   useEffect(() => {
     setCards();
   }, []);
-  // console.log(cards[54]);
+  console.log(cards[54]);
 
   return (
     <>
       <aside className="w-1/5 bg-fourth py-4">
         <div className="flex flex-col items-center gap-4">
+          <div className="w-full flex flex-col items-center">
+            <SearchBar
+              labelText={"Search a card"}
+              id={"searchBar"}
+              name={"search"}
+              textColor={"tertiary"}
+              placeHolder={"Enter a card name"}
+              data={cards}
+            />
+          </div>
           <div className="w-full flex flex-col items-center">
             <Label text={"Type"} color={"tertiary"} />
             <select
@@ -75,6 +89,7 @@ export default function Page() {
                   style={{ objectFit: "contain" }}
                   alt={`Image of color ${option}`}
                   onClick={() => handleColor(option)}
+                  className="cursor-pointer duration-150 hover:scale-110"
                 />
               ))}
             </div>
@@ -85,7 +100,7 @@ export default function Page() {
               {costs.map((cost, i) => (
                 <button
                   key={i}
-                  className="bg-primary border-tertiary font-bold text-tertiary p-2 rounded hover:bg-tertiary hover:text-primary duration-100"
+                  className="bg-primary border-tertiary font-bold text-tertiary p-2 rounded hover:bg-tertiary hover:text-primary duration-150"
                   onClick={() => handleCost(cost)}
                 >
                   {cost}
@@ -94,14 +109,21 @@ export default function Page() {
             </div>
           </div>
           <div className="w-full flex flex-col items-center">
-            <SearchBar
-              labelText={"Search a card"}
-              id={"searchBar"}
-              name={"search"}
-              buttonText={"Search"}
-              textColor={"primary"}
-              bgColor={"tertiary"}
-            />
+            <Label text={"Lore"} color={"tertiary"} />
+            <div className="w-3/4 grid grid-cols-4 ">
+              {lores.map((lore, i) => (
+                <Image
+                  key={i}
+                  src={`/lore-${lore}.png`}
+                  width={40}
+                  height={40}
+                  style={{ objectFit: "contain" }}
+                  alt={`Image of Lore`}
+                  onClick={() => handleLore(lore)}
+                  className="cursor-pointer duration-150 hover:scale-110"
+                />
+              ))}
+            </div>
           </div>
         </div>
       </aside>
