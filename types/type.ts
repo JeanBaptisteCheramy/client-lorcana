@@ -33,4 +33,7 @@ export type deckItem={
   updatedAt: string
 }
 
+export type DeckCard = {
+  deck: { name:string ; cards:Array<{ cards: dataItem }>}
+}
 

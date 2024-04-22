@@ -1,4 +1,5 @@
 "use client";
+import DeckCard from "@/components/DeckCard";
 import { useDecksStore } from "@/store/dataAPI";
 import { useEffect } from "react";
 
@@ -9,5 +10,11 @@ export default function Page() {
   }, []);
   console.log(decks);
 
-  return <p>{decks.decks[0].name}</p>;
+  return (
+    <div className='grid grid-cols-3 gap-10'>
+      {decks.decks.map((item: any, i: number) => (
+        <DeckCard key={i} deck={item} />
+      ))}
+    </div>
+  );
 }
