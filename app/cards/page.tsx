@@ -7,6 +7,7 @@ import { slugify } from "@/utils/utils";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import SearchBar from "../../components/SearchBar";
+import Aside from "@/components/Aside";
 
 export default function Page() {
   const { cards, setCards } = useCardStore();
@@ -51,7 +52,7 @@ export default function Page() {
 
   return (
     <>
-      <aside className="w-1/5 bg-fourth py-4">
+      <Aside>
         <div className="flex flex-col items-center gap-4">
           <div className="w-full flex flex-col items-center">
             <SearchBar
@@ -126,9 +127,8 @@ export default function Page() {
             </div>
           </div>
         </div>
-      </aside>
-
-      <section className="w-4/5 grid grid-cols-3 justify-items-center	gap-8 p-4">
+      </Aside>
+      <section className="w-4/5 h-90vh grid grid-cols-3 justify-items-center	gap-8 p-4 overflow-scroll">
         {filteredCards.map((item: dataItem, i: number) => (
           <GameCard key={i} card={item} />
         ))}

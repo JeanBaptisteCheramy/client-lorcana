@@ -8,14 +8,15 @@ export default function Navigation() {
   const navLinks = ["Cards", "Decks", "Contact"];
 
   return (
-    <nav className="width-screen bg-secondary h-24 flex justify-between items-center px-16">
+    <nav className="width-screen h-10vh bg-secondary flex justify-between items-center px-16">
       <Link href="/" className="flex">
         <Image
           src="/logo.png"
           width={200}
-          height={96}
-          style={{ objectFit: "cover" }}
+          height={200}
+
           alt="Picture of the author"
+          className="h-42 object-contain"
         />
       </Link>
 
