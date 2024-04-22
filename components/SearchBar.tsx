@@ -35,7 +35,7 @@ export default function SearchBar(props: SearchProps) {
         className="rounded-md p-2 w-3/4 placeholder:text-center placeholder:italic placeholder:opacity-60"
         placeholder={props.placeHolder}
         type="search"
-        autocomplete="off"
+        autoComplete="off"
         id={props.id}
         name={props.name}
         value={input}

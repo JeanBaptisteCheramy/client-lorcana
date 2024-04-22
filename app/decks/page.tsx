@@ -9,5 +9,5 @@ export default function Page() {
   }, []);
   console.log(decks);
 
-  return <p>{decks[0].name}</p>;
+  return <p>{decks.decks[0].name}</p>;
 }
