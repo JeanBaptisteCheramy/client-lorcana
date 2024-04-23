@@ -16,6 +16,7 @@ export default function SearchBar(props: SearchProps) {
   const router = useRouter();
   const [input, setInput] = useState("");
   const [searchList, setSearchList] = useState(Array<dataItem>);
+  
   function handleInput(e: ChangeEvent<HTMLInputElement>) {
     setInput(e.target.value);
     const equals = props.data.filter((item) =>

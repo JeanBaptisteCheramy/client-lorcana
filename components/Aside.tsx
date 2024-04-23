@@ -5,5 +5,11 @@ export default function Aside({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return <aside className="w-1/5 h-90vh bg-fourth py-4">{children}</aside>;
+  return (
+    <aside className="w-1/5 h-90vh bg-fourth py-4">
+      <div className="flex flex-col items-center gap-4">
+        {children}
+      </div>  
+    </aside>
+)
 }
