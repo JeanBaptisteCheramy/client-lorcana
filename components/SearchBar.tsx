@@ -33,7 +33,7 @@ export default function SearchBar(props: SearchProps) {
     <>
       <Label text={props.labelText} color={props.textColor} />
       <input
-        className="rounded-md p-2 w-3/4 placeholder:text-center placeholder:italic placeholder:opacity-60"
+        className="focus:outline-none focus:ring-2 ring-tertiary rounded-md p-2 w-3/4 placeholder:text-center placeholder:italic placeholder:opacity-60"
         placeholder={props.placeHolder}
         type="search"
         autoComplete="off"

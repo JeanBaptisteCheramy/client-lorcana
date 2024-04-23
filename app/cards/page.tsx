@@ -1,13 +1,13 @@
 "use client";
+import Aside from "@/components/Aside";
 import GameCard from "@/components/GameCard";
 import Label from "@/components/Label";
 import { useCardStore } from "@/store/dataAPI";
-import dataItem from "@/types/type";
+import { dataItem } from "@/types/type";
 import { slugify } from "@/utils/utils";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import SearchBar from "../../components/SearchBar";
-import Aside from "@/components/Aside";
 
 export default function Page() {
   const { cards, setCards } = useCardStore();
@@ -67,7 +67,7 @@ export default function Page() {
           <select
             id="type"
             onChange={handleSelect}
-            className="w-3/4 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block p-2.5 "
+            className="focus:!outline-none focus:outline-none focus:ring-2 ring-tertiary w-3/4 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block p-2.5 "
           >
             {typeOptions.map((item, i) => (
               <option key={i} value={item}>

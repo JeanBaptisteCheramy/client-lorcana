@@ -2,7 +2,6 @@
 import Aside from "@/components/Aside";
 import DeckCard from "@/components/DeckCard";
 import { useDecksStore } from "@/store/dataAPI";
-import { dataItem } from "@/types/type";
 import { sortDecksByCreation } from "@/utils/utils";
 import { ChangeEvent, useEffect, useState } from "react";
 import Label from "../../components/Label";

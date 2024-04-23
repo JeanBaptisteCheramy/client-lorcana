@@ -1,11 +1,5 @@
-import { dataItem, deckItem } from "@/types/type";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-
-type cardStore = {
-    cards: dataItem[] | null;
-    setCards: () => Promise<void>;
-}
 
 export const useCardStore = create(
   persist(
@@ -27,12 +21,6 @@ export const useCardStore = create(
   )
 );
 
-
-type decksStore = {
-  decks: deckItem[] | null;
-  setDecks: (decks: deckItem[]) => void; 
-}
-
 export const useDecksStore = create(
   persist(
     (set) => ({
@@ -49,6 +37,26 @@ export const useDecksStore = create(
     }),
     {
       name: "decks-store", 
+    }
+  )
+);
+
+export const useOneDeckStore = create(
+  persist(
+    (set) => ({
+      decks: null,
+      setOneDeck: async (id:number) => {
+        try {
+          const response = await fetch(`http://localhost:3333/api/public/decks/${id}`);
+          const deckData = await response.json();
+          set({ deck: deckData });
+        } catch (error) {
+          console.error("Error fetching deck data:", error);
+        }
+      },
+    }),
+    {
+      name: "deck-store", 
     }
   )
 );
