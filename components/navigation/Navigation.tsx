@@ -9,24 +9,24 @@ export default function Navigation() {
 
   return (
     <nav className="width-screen h-10vh bg-secondary flex justify-between items-center px-16">
-      <Link href="/" className="flex">
+      <Link href="/" className="flex w-6/12">
         <Image
           src="/logo.png"
           width={200}
           height={200}
 
           alt="Picture of the author"
-          className="h-42 object-contain"
+          className="h-32 w-32 object-contain"
         />
       </Link>
 
-      <ul className="flex justify-evenly items-center w-1/2">
+      <ul className="flex justify-evenly items-center w-5/12">
         {navLinks.map((link, i) => (
           <Line key={i} name={link} url={slugify(link)} />
         ))}
       </ul>
       <Button
-        width={"1/4"}
+        width={"1/12"}
         text={"Account"}
         icon={"material-symbols-outlined"}
         iconInSpan={"person"}

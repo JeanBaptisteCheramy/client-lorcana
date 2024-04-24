@@ -67,7 +67,7 @@ export default function Page() {
           <select
             id="type"
             onChange={handleSelect}
-            className="focus:!outline-none focus:outline-none focus:ring-2 ring-tertiary w-3/4 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block p-2.5 "
+            className="focus:!outline-none focus:ring-2 ring-tertiary w-3/4 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block p-2.5 "
           >
             {typeOptions.map((item, i) => (
               <option key={i} value={item}>

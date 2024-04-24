@@ -7,7 +7,7 @@ type LineProps = {
 
 export default function Line(props: LineProps) {
   return (
-    <li className="text-2xl font-nunito font-bold text-tertiary">
+    <li className="text-xl font-nunito font-bold text-tertiary">
       <Link href={`/${props.url}`}>{props.name}</Link>
     </li>
   );

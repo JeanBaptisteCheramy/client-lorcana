@@ -15,6 +15,10 @@ const config: Config = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
         'back': "url('/back.png')",
         'back2': "url('/back-2.png')",
+        'back3': "url('/background.jpg')",
+        'main': "url('/main.jpg')",
+        'decks': "url('/decks.png')",
+        'cards': "url('/cards.webp')",
       },
       colors: {
         'primary': '#FEFEFF',
@@ -52,6 +56,7 @@ const config: Config = {
         'm-12': '168deg',
       },
       height:{
+        'own-400': '400px',
         'own-600': '600px',
         '10vh': '10vh',
         '20vh': '20vh',
