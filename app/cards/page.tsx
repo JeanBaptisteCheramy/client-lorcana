@@ -2,7 +2,7 @@
 import Aside from "@/components/Aside";
 import GameCard from "@/components/GameCard";
 import Label from "@/components/Label";
-import { useCardStore } from "@/store/dataAPI";
+import { useCardStore, useColorStore } from "@/store/dataAPI";
 import { dataItem } from "@/types/type";
 import { slugify } from "@/utils/utils";
 import Image from "next/image";
@@ -11,6 +11,7 @@ import SearchBar from "../../components/SearchBar";
 
 export default function Page() {
   const { cards, setCards } = useCardStore();
+  const { colors, setColors } = useColorStore();
   const typeOptions: string[] = ["All"];
   const colorOptions: string[] = [];
   const costs: number[] = [];
@@ -45,10 +46,13 @@ export default function Page() {
     setFilteredCards(cards.filter((card: dataItem) => card.lore === lore));
   }
 
+
   useEffect(() => {
     setCards();
+    setColors(colorOptions);
   }, []);
-
+  console.log(colors);
+  
   return (
     <>
       <Aside>

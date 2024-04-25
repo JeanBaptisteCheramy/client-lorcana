@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <section className="bg-fourth h-90vh w-full ">
       <div className="shadow-own-1 w-11/12 m-auto grid gap-4 p-12 grid-cols-8 grid-rows-4 h-80vh my-6 bg-back3 bg-cover rounded-2xl">
-        <div className=" shadow-own-1 p-4 col-span-5 row-span-4 bg-main bg-cover bg-no-repea rounded-2xl flex flex-col justify-between gap-2">
+        <div className="shadow-own-1 p-4 col-span-5 row-span-4 bg-main bg-center bg-cover bg-no-repeat rounded-2xl flex flex-col justify-between gap-2">
           <div className="flex flex-col justify-center w-fit rounded-2xl p-4 mx-auto bg-black/60">
             <p className="text-primary text-center text-2xl">
               Welcome to our Lorcana cards index.

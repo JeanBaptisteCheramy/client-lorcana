@@ -4,7 +4,7 @@ import { persist } from "zustand/middleware";
 export const useCardStore = create(
   persist(
     (set) => ({
-      cards: null,
+      cards: [],
       setCards: async () => {
         try {
           const response = await fetch("http://localhost:3333/api/public/cards");
@@ -20,7 +20,6 @@ export const useCardStore = create(
     }
   )
 );
-
 export const useDecksStore = create(
   persist(
     (set) => ({
@@ -60,3 +59,15 @@ export const useOneDeckStore = create(
     }
   )
 );
+
+export const useColorStore = create(
+  persist(
+    (set)=>({
+      colors:null,
+      setColors: (newColors: string[]) => set({ colors: newColors }),
+    }),
+    {
+      name: "color-store", 
+    }
+  )
+)
