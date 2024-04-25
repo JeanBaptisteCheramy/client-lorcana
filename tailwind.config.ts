@@ -33,6 +33,7 @@ const config: Config = {
       },
       boxShadow: {
         'own-1': '3px 6px 10px 0px rgba(0,0,0,0.34)',
+        'own-2': '0px 0px 15px 1px rgba(0,0,0,0.91)',
       },
       scale: {
         'own-80': '0.80',

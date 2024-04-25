@@ -6,6 +6,7 @@ import Line from "../Line";
 
 export default function Navigation() {
   const navLinks = ["Cards", "Decks", "Contact"];
+  const user: boolean = false;
 
   return (
     <nav className="width-screen h-10vh bg-secondary flex justify-between items-center px-16">
@@ -14,9 +15,8 @@ export default function Navigation() {
           src="/logo.png"
           width={200}
           height={200}
-
           alt="Picture of the author"
-          className="h-32 w-32 object-contain"
+          className="size-32 object-contain"
         />
       </Link>
 
@@ -27,9 +27,10 @@ export default function Navigation() {
       </ul>
       <Button
         width={"1/12"}
-        text={"Account"}
+        text={user ? "Account" : "Authentication"}
         icon={"material-symbols-outlined"}
         iconInSpan={"person"}
+        href={user ? "/profile" : "/authentication"}
       />
     </nav>
   );
