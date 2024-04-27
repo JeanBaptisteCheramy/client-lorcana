@@ -1,43 +1,31 @@
+import { postLogin, postRegister } from "@/helper/backend_helper";
+import Label from "./Label";
 type AuthProps = {
   type: string;
-  email?: string;
-  firstName?: string;
-  lastName?: string;
-  password?: string;
-  password_confirmation?: string;
 };
 
 export default function AuthForm(props: AuthProps) {
   const inputStyle =
-    "m-auto focus:outline-none focus:ring-2 ring-tertiary rounded-md p-2 w-5/6 placeholder:text-center placeholder:italic placeholder:opacity-60";
+    " m-auto focus:outline-none focus:ring-2 ring-tertiary rounded-md p-2 w-5/6 placeholder:text-center placeholder:italic placeholder:opacity-60";
 
-  async function POST(dataToWrite) {
-    'use server'
-    const res = await fetch("http://localhost:3333/api/auth/register", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(dataToWrite),
-    });
-
-    const data = await res.json();
-    console.log(data);
-    
-    return Response.json(data);
-  }
   const register = async (formData: FormData) => {
     "use server";
     const data = Object.fromEntries(formData);
-    POST(data)
+    postRegister(data);
+  };
+  const login = async (formData: FormData) => {
+    "use server";
+    const data = Object.fromEntries(formData);
+    postLogin(data);
   };
 
   return (
     <form
-      className={`${props.type === "register" ? "bg-secondary rounded-l-2xl" : "bg-tertiary rounded-r-2xl"} flex flex-col gap-8 justify-between py-4`}
-      action={register}
+      className="bg-secondary p-8 rounded-2xl flex flex-col gap-8 justify-between py-4"
+      action={props.type === "register" ? register : login}
     >
-      <div className="flex flex-col gap-4 ">
+      <div className="grid grid-cols-own-auth gap-4 ">
+        <Label text="Email" color="tertiary" />
         <input
           type="text"
           name="email"
@@ -45,21 +33,28 @@ export default function AuthForm(props: AuthProps) {
           className={inputStyle}
         />
         {props.type === "register" && (
-          <input
-            type="text"
-            name="firstName"
-            placeholder="FirstName"
-            className={inputStyle}
-          />
+          <>
+            <Label text="First Name" color="tertiary" />
+            <input
+              type="text"
+              name="firstName"
+              placeholder="FirstName"
+              className={inputStyle}
+            />
+          </>
         )}
         {props.type === "register" && (
-          <input
-            type="text"
-            name="lastName"
-            placeholder="LastName"
-            className={inputStyle}
-          />
+          <>
+            <Label text="Last Name" color="tertiary" />
+            <input
+              type="text"
+              name="lastName"
+              placeholder="LastName"
+              className={inputStyle}
+            />
+          </>
         )}
+        <Label text="Password" color="tertiary" />
         <input
           type="password"
           name="password"
@@ -67,22 +62,21 @@ export default function AuthForm(props: AuthProps) {
           className={inputStyle}
         />
         {props.type === "register" && (
-          <input
-            type="password"
-            name="password_confirmation"
-            placeholder="Confirm password"
-            className={inputStyle}
-          />
+          <>
+            <Label text="Password Confirmation" color="tertiary" />
+            <input
+              type="password"
+              name="password_confirmation"
+              placeholder="Confirm password"
+              className={inputStyle}
+            />
+          </>
         )}
       </div>
       <div className="flex justify-center">
         <button
           type="submit"
-          className={
-            props.type === "register"
-              ? "bg-tertiary text-primary rounded-md w-1/2 m-auto h-12 shadow-own-1"
-              : "text-tertiary bg-secondary rounded-md w-1/2 m-auto h-12 shadow-own-1"
-          }
+          className="bg-dark-secondary text-primary hover:bg-tertiary hover:text-secondary rounded-md w-1/2 m-auto h-12 shadow-own-1"
         >
           {props.type === "login" ? "Login" : "Register"}
         </button>
