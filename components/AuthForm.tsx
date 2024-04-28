@@ -1,5 +1,6 @@
 import { postLogin, postRegister } from "@/helper/backend_helper";
 import Label from "./Label";
+import { useErrorStore } from "@/store/error";
 type AuthProps = {
   type: string;
 };
@@ -18,6 +19,7 @@ export default function AuthForm(props: AuthProps) {
     const data = Object.fromEntries(formData);
     postLogin(data);
   };
+
 
   return (
     <form
