@@ -1,26 +1,38 @@
-import { postLogin, postRegister } from "@/helper/backend_helper";
+import { POST } from "@/helper/api_helper";
+import { BASE_URL, LOGIN_URL, REGISTER_URL } from "@/helper/url_helper";
+import { useEffect, useState } from "react";
 import Label from "./Label";
-import { useErrorStore } from "@/store/error";
 type AuthProps = {
   type: string;
 };
 
 export default function AuthForm(props: AuthProps) {
+  const [error, setError] = useState<string | null>(null);
   const inputStyle =
     " m-auto focus:outline-none focus:ring-2 ring-tertiary rounded-md p-2 w-5/6 placeholder:text-center placeholder:italic placeholder:opacity-60";
 
   const register = async (formData: FormData) => {
-    "use server";
-    const data = Object.fromEntries(formData);
-    postRegister(data);
+    try {
+      const data = Object.fromEntries(formData);
+      await POST(BASE_URL + REGISTER_URL, data);
+      setError(null);
+    } catch (error) {
+      setError(error.message);
+    }
   };
+
   const login = async (formData: FormData) => {
-    "use server";
-    const data = Object.fromEntries(formData);
-    postLogin(data);
+    try {
+      const data = Object.fromEntries(formData);
+      await POST(BASE_URL + LOGIN_URL, data);
+      setError(null);
+    } catch (error) {
+      setError(error.message);
+    }
   };
-
-
+  useEffect(() => {
+    console.log(error);
+  }, [error]);
   return (
     <form
       className="bg-secondary p-8 rounded-2xl flex flex-col gap-8 justify-between py-4"
@@ -75,6 +87,16 @@ export default function AuthForm(props: AuthProps) {
           </>
         )}
       </div>
+      {error === "E_VALIDATION_ERROR" && (
+        <p className="text-red-700 text-center text-lg">
+          Some fields are not correctly filled.
+        </p>
+      )}
+      {error === "23505" && (
+        <p className="text-red-700 text-center text-lg">
+          An account is already registered with the email you provided
+        </p>
+      )}
       <div className="flex justify-center">
         <button
           type="submit"

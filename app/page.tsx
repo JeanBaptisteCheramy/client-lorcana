@@ -16,7 +16,7 @@ export default function Home() {
             </p>
           </div>
           <Link
-            href={"/authentication"}
+            href={"/register"}
             className="shadow-own-2 shadow-white w-1/3 h-1/4 font-nunito font-bold text-2xl mx-auto  px-2 flex items-center justify-evenly border-2 rounded-2xl duration-100 text-tertiary border-none bg-secondary hover:text-primary hover:bg-tertiary"
           >
             REGISTER

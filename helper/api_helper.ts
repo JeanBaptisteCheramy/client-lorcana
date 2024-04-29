@@ -1,6 +1,5 @@
-export async function POST(url:string, dataToWrite:FormData) {
-    "use server";
-
+export async function POST(url: string, dataToWrite: FormData) {
+  try {
     const res = await fetch(url, {
       method: "POST",
       headers: {
@@ -8,7 +7,15 @@ export async function POST(url:string, dataToWrite:FormData) {
       },
       body: JSON.stringify(dataToWrite),
     });
+
+    if (!res.ok) {
+      const errorData = await res.json();
+      throw new Error(errorData.message);
+    }
+
     const data = await res.json();
-    
-    return Response.json(data);
+    return data;
+  } catch (error) {
+    throw error;
   }
+}
