@@ -1,6 +1,6 @@
 import { POST } from "@/helper/api_helper";
 import { BASE_URL, LOGIN_URL, REGISTER_URL } from "@/helper/url_helper";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Label from "./Label";
 type AuthProps = {
   type: string;
@@ -30,9 +30,7 @@ export default function AuthForm(props: AuthProps) {
       setError(error.message);
     }
   };
-  useEffect(() => {
-    console.log(error);
-  }, [error]);
+
   return (
     <form
       className="bg-secondary p-8 rounded-2xl flex flex-col gap-8 justify-between py-4"
