@@ -13,7 +13,8 @@ export async function POST(url: string, dataToWrite: FormData) {
       throw new Error(errorData.message);
     }
 
-    const data = await res.json();
+    const data = await res.json();;
+    
     return data;
   } catch (error) {
     throw error;

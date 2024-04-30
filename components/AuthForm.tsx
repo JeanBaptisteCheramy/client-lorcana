@@ -1,6 +1,7 @@
 import { POST } from "@/helper/api_helper";
 import { BASE_URL, LOGIN_URL, REGISTER_URL } from "@/helper/url_helper";
-import { useState } from "react";
+import { useUserStore } from "@/store/userStore";
+import { useEffect, useState } from "react";
 import Label from "./Label";
 type AuthProps = {
   type: string;
@@ -8,6 +9,7 @@ type AuthProps = {
 
 export default function AuthForm(props: AuthProps) {
   const [error, setError] = useState<string | null>(null);
+  const { user, setUser } = useUserStore();
   const inputStyle =
     " m-auto focus:outline-none focus:ring-2 ring-tertiary rounded-md p-2 w-5/6 placeholder:text-center placeholder:italic placeholder:opacity-60";
 
@@ -24,12 +26,18 @@ export default function AuthForm(props: AuthProps) {
   const login = async (formData: FormData) => {
     try {
       const data = Object.fromEntries(formData);
-      await POST(BASE_URL + LOGIN_URL, data);
+      const logingUser = await POST(BASE_URL + LOGIN_URL, data);
+      setUser(logingUser);
+
       setError(null);
     } catch (error) {
       setError(error.message);
     }
   };
+
+  useEffect(() => {
+    console.log(user);
+  }, [user]);
 
   return (
     <form
