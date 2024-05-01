@@ -1,7 +1,7 @@
 import { create } from 'zustand'
 
 type userType = {
-  user: {
+  user:{
     firstName: string
     lastName: string
     email: string
