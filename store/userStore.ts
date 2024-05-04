@@ -14,5 +14,6 @@ export const useUserStore = create<userType>((set)=>({
     lastName: '',
     email: '',
   },
-  setUser: (firstName:string, lastName:string, email:string) => set({user:{firstName:firstName, lastName:lastName,email:email}})
+  setUser: (userData:any) => set({ user: userData }),
+  resetUser:() =>({  user:{ firstName: '', lastName: '', email: ''}})
 }))

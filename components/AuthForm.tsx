@@ -1,6 +1,7 @@
 import { POST } from "@/helper/api_helper";
 import { BASE_URL, LOGIN_URL, REGISTER_URL } from "@/helper/url_helper";
 import { useUserStore } from "@/store/userStore";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import Label from "./Label";
 type AuthProps = {
@@ -10,6 +11,7 @@ type AuthProps = {
 export default function AuthForm(props: AuthProps) {
   const [error, setError] = useState<string | null>(null);
   const { user, setUser } = useUserStore();
+  const router = useRouter();
   const inputStyle =
     " m-auto focus:outline-none focus:ring-2 ring-tertiary rounded-md p-2 w-5/6 placeholder:text-center placeholder:italic placeholder:opacity-60";
 
@@ -27,8 +29,13 @@ export default function AuthForm(props: AuthProps) {
     try {
       const data = Object.fromEntries(formData);
       const logingUser = await POST(BASE_URL + LOGIN_URL, data);
-      setUser(logingUser);
 
+      setUser({
+        firstName: logingUser.firstName,
+        lastName: logingUser.lastName,
+        email: logingUser.email,
+      });
+      router.push("/profile");
       setError(null);
     } catch (error) {
       setError(error.message);
