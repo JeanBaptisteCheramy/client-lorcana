@@ -1,3 +1,5 @@
+"use client";
+import { useUserStore } from "@/store/userStore";
 import { slugify } from "@/utils/utils";
 import Image from "next/image";
 import Link from "next/link";
@@ -6,7 +8,16 @@ import Line from "../Line";
 
 export default function Navigation() {
   const navLinks = ["Cards", "Decks", "Contact"];
-  const user: boolean = false;
+  const { user, resetUser } = useUserStore();
+
+  function logout() {
+    console.log("salut");
+
+    resetUser();
+    localStorage.removeItem("user-storage");
+  }
+
+  console.log(user);
 
   return (
     <nav className="width-screen h-10vh bg-secondary flex justify-between items-center px-16">
@@ -25,13 +36,23 @@ export default function Navigation() {
           <Line key={i} name={link} url={slugify(link)} />
         ))}
       </ul>
-      <Button
-        width={"1/12"}
-        text={user ? "Account" : "Authentication"}
-        icon={"material-symbols-outlined"}
-        iconInSpan={"person"}
-        href={user ? "/profile" : "/authentication"}
-      />
+      <div className="flex gap-4">
+        <Button
+          width={"1/12"}
+          text={user ? "Profile" : "Login"}
+          icon={"material-symbols-outlined"}
+          iconInSpan={"person"}
+          href={user ? "/profile" : "/login"}
+        />
+        <Button
+          width={"1/12"}
+          text={user ? "Logout" : "Register"}
+          icon={"material-symbols-outlined"}
+          iconInSpan={user ? "logout" : "app_registration"}
+          href={user ? "/" : "/register"}
+          onclick={logout}
+        />
+      </div>
     </nav>
   );
 }

@@ -6,11 +6,13 @@ type ButtonProps = {
   iconInSpan?: string;
   width?: string;
   href:string
+  onclick?: ()=>void 
 };
 
 export default function Button(props: ButtonProps) {
   return (
     <Link
+    onClick={props.onclick}
       href={props.href}
       className={`${props.width} m-auto h-12 min-w-32 px-4 flex items-center justify-center gap-2 border-2 rounded-full duration-100 text-tertiary border-tertiary bg-primary hover:bg-tertiary hover:text-primary`}
     >
