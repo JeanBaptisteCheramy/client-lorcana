@@ -11,10 +11,7 @@ export default function Navigation() {
   const { user, resetUser } = useUserStore();
 
   function logout() {
-    console.log("salut");
-
     resetUser();
-    localStorage.removeItem("user-storage");
   }
 
   console.log(user);
@@ -39,17 +36,17 @@ export default function Navigation() {
       <div className="flex gap-4">
         <Button
           width={"1/12"}
-          text={user ? "Profile" : "Login"}
+          text={user.firstName !== "" ? "Profile" : "Login"}
           icon={"material-symbols-outlined"}
           iconInSpan={"person"}
-          href={user ? "/profile" : "/login"}
+          href={user.firstName !== "" ? "/profile" : "/login"}
         />
         <Button
           width={"1/12"}
-          text={user ? "Logout" : "Register"}
+          text={user.firstName !== "" ? "Logout" : "Register"}
           icon={"material-symbols-outlined"}
-          iconInSpan={user ? "logout" : "app_registration"}
-          href={user ? "/" : "/register"}
+          iconInSpan={user.firstName !== "" ? "logout" : "app_registration"}
+          href={user.firstName === "" ? "/" : "/register"}
           onclick={logout}
         />
       </div>
