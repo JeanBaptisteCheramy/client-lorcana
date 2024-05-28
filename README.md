@@ -1,5 +1,24 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+# About me
+Welcome to my Github.
+
+https://github.com/JeanBaptisteCheramy
+
+This is a project I am working on to explore NextJS. I am self-learning by conducting research on the internet. I work using the documentation and all possible resources to enhance my skills on a daily basis.
+
+If you are a recruiter, feel free to contact me via LinkedIn. I am always optimistic about engaging in discussions and open to new opportunities.
+https://www.linkedin.com/in/jean-baptiste-ch%C3%A9ramy/
+
+# client-lorcana
+
+This is a Front-end project for the trading card game Lorcana, built in React.js using the Nextjs framework (TypeScript). The idea is for users to create their own collection and build decks with it. Backend in there: https://github.com/JeanBaptisteCheramy/lorcana-back
+
+It's a work in progress.
+
+
+
+
 ## Getting Started
 
 First, run the development server:
